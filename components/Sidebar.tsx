@@ -54,6 +54,18 @@ function ContactIcon() {
   );
 }
 
+function ArtikelIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+      <line x1="8" y1="7" x2="16" y2="7" />
+      <line x1="8" y1="11" x2="14" y2="11" />
+      <line x1="8" y1="15" x2="12" y2="15" />
+    </svg>
+  );
+}
+
 function LeafIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -63,11 +75,23 @@ function LeafIcon() {
   );
 }
 
+function RecycleIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="23 4 23 10 17 10" />
+      <polyline points="1 20 1 14 7 14" />
+      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+    </svg>
+  );
+}
+
 const navItems: { href: string; label: string; icon: () => JSX.Element }[] = [
   { href: '/', label: 'Beranda', icon: HomeIcon },
   { href: '/products', label: 'Produk', icon: ProductsIcon },
   { href: '/impact', label: 'Pelacak Dampak', icon: ImpactIcon },
   { href: '/story', label: 'Cerita Crunko', icon: StoryIcon },
+  { href: '/artikel', label: 'Artikel Singkat', icon: ArtikelIcon },
+  { href: '/ide-daur-ulang', label: 'Ide Daur Ulang', icon: RecycleIcon },
   { href: '/contact', label: 'Kontak', icon: ContactIcon },
 ];
 
