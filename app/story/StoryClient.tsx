@@ -138,28 +138,13 @@ export default function StoryClient() {
         style={{ maxWidth: "640px" }}
       >
         <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
-          <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-brand-beige to-brand-sand">
-            <svg
-              viewBox="0 0 100 60"
-              className="w-[34%] opacity-60"
-              aria-hidden="true"
-            >
-              <g
-                fill="none"
-                stroke="var(--color-brand-green)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M8 50 L50 14 L92 50" />
-                <path d="M22 50 L22 34 L78 34 L78 50" />
-                <line x1="50" y1="14" x2="50" y2="4" />
-              </g>
-            </svg>
+          <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
+            <img
+              src="https://i.ibb.co.com/XxnNtTs7/images-2.jpg"
+              alt="gang dan arsitektur Kotagede"
+              className="h-full w-full object-cover"
+            />
           </div>
-          <p className="px-1 pb-1 pt-3 font-mono text-[0.7rem] tracking-[0.03em] text-brand-dark/40">
-            Foto placeholder — gang &amp; arsitektur Kotagede
-          </p>
         </div>
       </div>
 
@@ -199,29 +184,13 @@ export default function StoryClient() {
         style={{ maxWidth: "640px" }}
       >
         <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
-          <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-brand-beige to-brand-sand">
-            <svg
-              viewBox="0 0 100 60"
-              className="w-[34%] opacity-60"
-              aria-hidden="true"
-            >
-              <g
-                fill="none"
-                stroke="var(--color-brand-green)"
-                strokeWidth="2"
-                strokeLinejoin="round"
-              >
-                <rect x="10" y="14" width="20" height="20" rx="2" />
-                <rect x="40" y="14" width="20" height="20" rx="2" />
-                <rect x="70" y="14" width="20" height="20" rx="2" />
-                <rect x="25" y="34" width="20" height="20" rx="2" />
-                <rect x="55" y="34" width="20" height="20" rx="2" />
-              </g>
-            </svg>
+          <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
+            <img
+              src="https://i.ibb.co.com/N2CC1p6s/images.jpg"
+              alt="Yangko, dipotong khas berbentuk kotak"
+              className="h-full w-full object-cover"
+            />
           </div>
-          <p className="px-1 pb-1 pt-3 font-mono text-[0.7rem] tracking-[0.03em] text-brand-dark/40">
-            Foto placeholder — Yangko, dipotong khas berbentuk kotak
-          </p>
         </div>
       </div>
 
