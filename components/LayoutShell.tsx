@@ -18,7 +18,7 @@ export default function LayoutShell({
   return (
     <>
       <Sidebar />
-      <main className="md:pl-64">{children}</main>
+      <main className="page-transition min-h-screen md:pl-64">{children}</main>
     </>
   );
 }

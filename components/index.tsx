@@ -8,12 +8,12 @@ export function SectionHeading({
   centered?: boolean;
 }) {
   return (
-    <div className={`mb-16 ${centered ? 'text-center' : ''}`}>
-      <span className="inline-block rounded-full bg-brand-green-light px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-green">
+    <div className={`mb-10 md:mb-12 ${centered ? 'text-center' : ''}`}>
+      <span className="inline-block rounded-full border border-brand-green/15 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-green shadow-sm">
         {label}
       </span>
       <h2
-        className={`mt-4 text-3xl font-bold tracking-tight text-brand-dark md:text-4xl ${centered ? 'mx-auto max-w-2xl' : ''}`}
+        className={`mt-4 text-3xl font-bold leading-tight tracking-tight text-brand-dark md:text-4xl ${centered ? 'mx-auto max-w-2xl' : ''}`}
       >
         {title}
       </h2>
@@ -34,11 +34,11 @@ export function ProductCard({
 }) {
   return (
     <div
-      className="group animate-fade-in-up relative flex flex-col overflow-hidden rounded-3xl border border-brand-beige/60 bg-white shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl opacity-0"
+      className="card-surface interactive-lift group relative flex min-h-[320px] flex-col overflow-hidden rounded-2xl opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
     >
-      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-cream to-brand-beige/40 p-8">
-        <div className="flex h-32 w-24 items-center justify-center rounded-2xl bg-gradient-to-b from-brand-green/20 to-brand-accent/20 shadow-inner transition-transform duration-500 group-hover:scale-110">
+      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-mint to-brand-sage/45 p-8">
+        <div className="flex h-32 w-24 items-center justify-center rounded-xl bg-gradient-to-b from-white to-brand-green-light shadow-inner transition-transform duration-500 ease-out group-hover:scale-105">
           <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-green/50">
             Mockup<br />Produk
           </span>
@@ -49,7 +49,7 @@ export function ProductCard({
           </span>
         )}
       </div>
-      <div className="flex flex-1 flex-col gap-2 p-6">
+      <div className="flex flex-1 flex-col gap-2 p-5">
         <h3 className="text-lg font-bold text-brand-dark">{name}</h3>
         <p className="text-sm leading-relaxed text-brand-dark/60">{description}</p>
       </div>
@@ -151,7 +151,7 @@ export function TimelineItem({
 
 export function SocialIcon({ label }: { label: string }) {
   return (
-    <div className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-brand-beige/60 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark/50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-green/30 hover:bg-brand-green-light hover:text-brand-green hover:shadow-md">
+    <div className="interactive-lift flex h-11 w-11 cursor-pointer items-center justify-center rounded-xl border border-brand-line bg-white/80 text-xs font-bold uppercase tracking-wider text-brand-dark/50 shadow-sm hover:border-brand-green/30 hover:bg-brand-green-light hover:text-brand-green">
       {label}
     </div>
   );
@@ -166,13 +166,13 @@ export function FormField({ label, multiline = false }: { label: string; multili
       {multiline ? (
         <textarea
           rows={4}
-          className="w-full resize-none rounded-xl border border-brand-beige/60 bg-white/60 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          className="w-full resize-none rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 ease-out placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
           placeholder={`${label.toLowerCase()} Anda...`}
         />
       ) : (
         <input
           type="text"
-          className="w-full rounded-xl border border-brand-beige/60 bg-white/60 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          className="w-full rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 ease-out placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
           placeholder={`${label.toLowerCase()} Anda`}
         />
       )}

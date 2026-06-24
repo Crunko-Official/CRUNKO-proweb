@@ -103,7 +103,7 @@ export default function Sidebar() {
     <>
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg ring-1 ring-brand-beige/40 md:hidden"
+        className="fixed left-4 top-4 z-50 flex h-11 w-11 items-center justify-center rounded-xl bg-white/90 shadow-lg ring-1 ring-brand-line backdrop-blur-md transition-transform duration-300 ease-out hover:scale-105 md:hidden"
         aria-label="Toggle navigation"
       >
         <div className="flex flex-col gap-1">
@@ -114,11 +114,11 @@ export default function Sidebar() {
       </button>
 
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-brand-beige/60 bg-white/95 backdrop-blur-xl transition-transform duration-300 md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-brand-line bg-brand-cream/92 shadow-[18px_0_45px_rgba(45,58,45,0.08)] backdrop-blur-xl transition-transform duration-500 ease-out md:translate-x-0 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-center border-b border-brand-beige/40 px-6 py-8">
+        <div className="flex items-center justify-center border-b border-brand-line px-6 py-7">
           <Image
             src="/logo.png"
             alt="CRUNKO"
@@ -129,7 +129,7 @@ export default function Sidebar() {
           />
         </div>
 
-        <nav className="flex flex-1 flex-col gap-1 px-3 py-6">
+        <nav className="flex flex-1 flex-col gap-1.5 px-3 py-5">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -137,10 +137,10 @@ export default function Sidebar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                className={`interactive-lift flex min-h-12 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium ${
                   isActive
-                    ? 'bg-brand-green-light text-brand-green shadow-sm'
-                    : 'text-brand-dark/60 hover:bg-brand-beige/30 hover:text-brand-dark'
+                    ? 'bg-white text-brand-green shadow-sm ring-1 ring-brand-green/15'
+                    : 'text-brand-dark/60 hover:bg-white/70 hover:text-brand-dark'
                 }`}
               >
                 <item.icon />
@@ -153,8 +153,8 @@ export default function Sidebar() {
           })}
         </nav>
 
-        <div className="border-t border-brand-beige/40 px-6 py-5">
-          <div className="flex items-center gap-2 text-xs text-brand-dark/40">
+        <div className="border-t border-brand-line px-6 py-5">
+          <div className="flex items-start gap-2 text-xs leading-relaxed text-brand-dark/50">
             <LeafIcon />
             <span>Keberlanjutan di setiap gigitan</span>
           </div>
@@ -163,7 +163,7 @@ export default function Sidebar() {
 
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-30 bg-brand-dark/24 backdrop-blur-sm md:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}

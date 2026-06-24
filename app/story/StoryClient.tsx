@@ -74,7 +74,7 @@ export default function StoryClient() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-brand-cream font-serif text-brand-dark">
+    <div className="page-surface min-h-dvh font-serif text-brand-dark">
       {/* Scroll progress */}
       <div
         ref={progressRef}
@@ -83,7 +83,7 @@ export default function StoryClient() {
       />
 
       {/* ─── HERO ─── */}
-      <header className="flex min-h-screen flex-col justify-center px-6 py-16 md:px-8">
+      <header className="flex min-h-dvh flex-col justify-center px-6 py-20 md:px-8">
         <div className="mx-auto w-full" style={{ maxWidth: "640px" }}>
           <p className="mb-5 font-mono text-[0.7rem] uppercase tracking-[0.18em] text-brand-green">
             Cerita Crunko{" "}
@@ -92,7 +92,7 @@ export default function StoryClient() {
           <h1 className="mb-3 font-serif font-semibold leading-[1.05] text-[clamp(2.3rem,9vw,3.6rem)]">
             Dari Kotagede untuk Masa Depan
           </h1>
-          <p className="mb-11 font-serif text-[clamp(1.1rem,4vw,1.4rem)] font-normal italic text-brand-dark/50">
+          <p className="mb-10 font-serif text-[clamp(1.1rem,4vw,1.4rem)] font-normal italic text-brand-dark/50">
             Kisah Yangko yang Hampir Terlupakan
           </p>
           <p
@@ -108,14 +108,14 @@ export default function StoryClient() {
             </em>
             .
           </p>
-          <div className="mt-14 flex items-center gap-2.5 font-mono text-[0.7rem] tracking-[0.12em] text-brand-dark/40 before:h-[30px] before:w-px before:bg-brand-green/20 before:content-['']">
+          <div className="mt-12 flex items-center gap-2.5 font-mono text-[0.7rem] tracking-[0.12em] text-brand-dark/40 before:h-[30px] before:w-px before:bg-brand-green/20 before:content-['']">
             Gulir untuk membaca
           </div>
         </div>
       </header>
 
       {/* ─── SECTION A: Kotagede ─── */}
-      <section className="story-reveal py-13">
+      <section className="story-reveal py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -137,7 +137,7 @@ export default function StoryClient() {
         className="mx-auto w-full px-6 md:px-8"
         style={{ maxWidth: "640px" }}
       >
-        <div className="story-reveal my-11 border border-brand-beige p-[0.6rem]">
+        <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
           <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-brand-beige to-brand-sand">
             <svg
               viewBox="0 0 100 60"
@@ -164,7 +164,7 @@ export default function StoryClient() {
       </div>
 
       {/* ─── SECTION B: shift to Yangko ─── */}
-      <section className="story-reveal py-13">
+      <section className="story-reveal py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -177,7 +177,7 @@ export default function StoryClient() {
         </div>
       </section>
 
-      <section className="story-reveal py-13">
+      <section className="story-reveal py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -198,7 +198,7 @@ export default function StoryClient() {
         className="mx-auto w-full px-6 md:px-8"
         style={{ maxWidth: "640px" }}
       >
-        <div className="story-reveal my-11 border border-brand-beige p-[0.6rem]">
+        <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
           <div className="flex aspect-[4/3] items-center justify-center bg-gradient-to-br from-brand-beige to-brand-sand">
             <svg
               viewBox="0 0 100 60"
@@ -226,7 +226,7 @@ export default function StoryClient() {
       </div>
 
       {/* ─── SECTION C: etymology ─── */}
-      <section className="story-reveal py-13">
+      <section className="story-reveal py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -274,7 +274,7 @@ export default function StoryClient() {
       </section>
 
       {/* ─── SECTION D: practicality ─── */}
-      <section className="story-reveal py-13">
+      <section className="story-reveal py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -292,14 +292,14 @@ export default function StoryClient() {
       </section>
 
       {/* ─── PIVOT ─── */}
-      <div className="bg-gradient-to-b from-brand-cream to-brand-warm py-22 text-center">
+      <div className="bg-gradient-to-b from-transparent to-brand-warm py-20 text-center">
         <p className="story-reveal font-serif text-[clamp(1.3rem,5vw,1.9rem)] font-medium italic text-brand-dark/50">
           Namun waktu terus berjalan.
         </p>
       </div>
 
       {/* ─── FADING SECTION ─── */}
-      <section className="bg-brand-warm py-13">
+      <section className="bg-brand-warm py-12">
         <div
           className="mx-auto w-full px-6 md:px-8"
           style={{ maxWidth: "640px" }}
@@ -332,7 +332,7 @@ export default function StoryClient() {
 
       {/* ─── SIGNATURE: dissolve triptych ─── */}
       <section
-        className="flex min-h-screen flex-col items-center justify-center bg-brand-warm px-6 py-16 text-center"
+        className="flex min-h-dvh flex-col items-center justify-center bg-brand-warm px-6 py-16 text-center"
         aria-label="Apa yang hilang ketika sebuah tradisi terlupakan"
       >
         <p className="story-dissolve font-serif text-[clamp(1.3rem,6vw,2.1rem)] font-medium italic text-brand-dark/80 max-w-[560px] py-6">
@@ -351,7 +351,7 @@ export default function StoryClient() {
           style={{ boxShadow: "0 0 18px 4px rgba(91, 140, 90, 0.55)" }}
           aria-hidden="true"
         />
-        <p className="mt-11 max-w-[420px] font-mono text-[0.72rem] leading-[1.7] tracking-[0.05em] text-brand-dark/40">
+        <p className="mt-10 max-w-[420px] font-mono text-[0.72rem] leading-[1.7] tracking-[0.05em] text-brand-dark/40">
           Akhir Bab Satu.
           <br />
           <em className="font-serif text-[0.98rem] italic text-brand-dark/60">

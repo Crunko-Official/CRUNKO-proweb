@@ -3,10 +3,10 @@
 import { getEcoImpactData } from "@/data/eco-impact-data"
 
 const levelColors: Record<string, string> = {
-  "Eco Starter": "bg-gray-200 text-gray-700",
-  "Eco Supporter": "bg-teal-100 text-teal-800",
-  "Eco Champion": "bg-emerald-100 text-emerald-800",
-  "Eco Guardian": "bg-amber-100 text-amber-800",
+  "Eco Starter": "bg-brand-beige text-brand-dark/70",
+  "Eco Supporter": "bg-brand-green-light text-brand-green-dark",
+  "Eco Champion": "bg-brand-sage text-brand-green-dark",
+  "Eco Guardian": "bg-brand-leaf/20 text-brand-green-dark",
 }
 
 export default function CommunityEcoImpact() {
@@ -14,9 +14,9 @@ export default function CommunityEcoImpact() {
   const badgeClass = levelColors[data.aggregateLevel] ?? ""
 
   return (
-    <section className="bg-brand-green-light px-6 py-16 md:py-24">
-      <div className="mx-auto max-w-lg">
-        <div className="mb-2 inline-block rounded-full bg-brand-green/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-brand-green">
+    <section className="bg-brand-green-light/70 px-6 section-pad">
+      <div className="mx-auto max-w-3xl">
+        <div className="mb-2 inline-block rounded-full border border-brand-green/15 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-brand-green">
           Dampak Kolektif
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-brand-dark md:text-3xl">
@@ -27,8 +27,8 @@ export default function CommunityEcoImpact() {
           dampak kolektif kita sejauh ini.
         </p>
 
-        <div className="mt-8 grid gap-4">
-          <div className="rounded-2xl border border-brand-green/15 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="card-surface interactive-lift rounded-2xl p-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">
               Total CRUNKO Terjual
             </p>
@@ -38,7 +38,7 @@ export default function CommunityEcoImpact() {
             <p className="mt-1 text-xs text-brand-dark/40">estimasi</p>
           </div>
 
-          <div className="rounded-2xl border border-brand-green/15 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+          <div className="card-surface interactive-lift rounded-2xl p-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">
               Kemasan Berpotensi Kembali ke Daur Ulang
             </p>
@@ -48,12 +48,12 @@ export default function CommunityEcoImpact() {
             <p className="mt-1 text-xs text-brand-dark/40">estimasi</p>
           </div>
 
-          <div className="rounded-2xl border border-brand-green/15 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+          <div className="card-surface interactive-lift rounded-2xl p-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-green">
               Eco Level Kolektif
             </p>
-            <div className="mt-2 flex items-center gap-3">
-              <p className="text-3xl font-bold tracking-tight text-brand-dark">
+            <div className="mt-2 flex flex-col items-start gap-3">
+              <p className="text-2xl font-bold tracking-tight text-brand-dark md:text-3xl">
                 {data.aggregateLevel}
               </p>
               <span

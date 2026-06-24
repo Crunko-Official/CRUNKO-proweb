@@ -30,7 +30,7 @@ export default function AdminDashboardPage() {
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <p>Loading...</p>
+        <p className="text-sm font-medium text-brand-dark/60">Loading...</p>
       </div>
     );
   }
@@ -41,15 +41,19 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-      <hr className="my-4" />
-      <p className="mb-6 text-gray-600">Welcome, {user.email}</p>
-      <button
-        onClick={handleLogout}
-        className="rounded bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700"
-      >
-        Logout
-      </button>
+      <div className="card-surface rounded-2xl p-6 md:p-8">
+        <h1 className="text-3xl font-bold text-brand-dark">Admin Dashboard</h1>
+        <hr className="my-4 border-brand-line" />
+        <p className="mb-6 break-words text-brand-dark/60">
+          Welcome, {user.email}
+        </p>
+        <button
+          onClick={handleLogout}
+          className="interactive-lift rounded-xl bg-brand-green px-4 py-2.5 text-sm font-semibold text-white hover:bg-brand-green-dark"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
