@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "CRUNKO — Camilan Berkelanjutan",
   description:
     "Camilan renyah dan bergizi yang dibuat dari bahan-bahan organik. Setiap gigitan mendukung pertanian berkelanjutan dan Bumi yang lebih sehat.",
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({

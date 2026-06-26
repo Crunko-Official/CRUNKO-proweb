@@ -1,17 +1,50 @@
 "use client"
 
-import { getEcoImpactData } from "@/data/eco-impact-data"
-
-const levelColors: Record<string, string> = {
-  "Eco Starter": "bg-brand-beige text-brand-dark/70",
-  "Eco Supporter": "bg-brand-green-light text-brand-green-dark",
-  "Eco Champion": "bg-brand-sage text-brand-green-dark",
-  "Eco Guardian": "bg-brand-leaf/20 text-brand-green-dark",
-}
+import { useEffect, useState } from "react"
+import { getEcoLevel } from "@/data/eco-impact-data"
+import type { EcoRank, SiteSettings } from "@/app/actions/impact"
 
 export default function CommunityEcoImpact() {
-  const data = getEcoImpactData()
-  const badgeClass = levelColors[data.aggregateLevel] ?? ""
+  const [settings, setSettings] = useState<SiteSettings | null>(null)
+  const [ranks, setRanks] = useState<EcoRank[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/impact/settings").then((r) => r.json()),
+      fetch("/api/impact/eco-ranks").then((r) => r.json()),
+    ])
+      .then(([s, r]) => {
+        setSettings(s)
+        setRanks(r)
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false))
+  }, [])
+
+  if (loading) {
+    return (
+      <section className="bg-brand-green-light/70 px-6 section-pad">
+        <div className="mx-auto max-w-3xl text-center text-sm text-brand-dark/40">
+          Loading data...
+        </div>
+      </section>
+    )
+  }
+
+  if (!settings || !ranks.length) {
+    return (
+      <section className="bg-brand-green-light/70 px-6 section-pad">
+        <div className="mx-auto max-w-3xl text-center text-sm text-brand-dark/40">
+          Data tidak tersedia.
+        </div>
+      </section>
+    )
+  }
+
+  const total = settings.total_crunko_terjual
+  const kemasanRecyclable = Math.round(total * (settings.recycling_rate / 100))
+  const rankLabel = settings.community_rank_name ?? getEcoLevel(total, ranks)
 
   return (
     <section className="bg-brand-green-light/70 px-6 section-pad">
@@ -33,7 +66,7 @@ export default function CommunityEcoImpact() {
               Total CRUNKO Terjual
             </p>
             <p className="mt-2 text-3xl font-bold tracking-tight text-brand-dark">
-              {data.totalCrunkoTerjual.toLocaleString("id-ID")}
+              {total.toLocaleString("id-ID")}
             </p>
             <p className="mt-1 text-xs text-brand-dark/40">estimasi</p>
           </div>
@@ -43,7 +76,7 @@ export default function CommunityEcoImpact() {
               Kemasan Berpotensi Kembali ke Daur Ulang
             </p>
             <p className="mt-2 text-3xl font-bold tracking-tight text-brand-dark">
-              {data.totalKemasanRecyclable.toLocaleString("id-ID")}
+              {kemasanRecyclable.toLocaleString("id-ID")}
             </p>
             <p className="mt-1 text-xs text-brand-dark/40">estimasi</p>
           </div>
@@ -54,12 +87,10 @@ export default function CommunityEcoImpact() {
             </p>
             <div className="mt-2 flex flex-col items-start gap-3">
               <p className="text-2xl font-bold tracking-tight text-brand-dark md:text-3xl">
-                {data.aggregateLevel}
+                {rankLabel}
               </p>
-              <span
-                className={`rounded-full px-3 py-0.5 text-xs font-bold uppercase tracking-wider ${badgeClass}`}
-              >
-                {data.aggregateLevel}
+              <span className="rounded-full bg-brand-green-light px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-brand-green-dark">
+                {rankLabel}
               </span>
             </div>
           </div>

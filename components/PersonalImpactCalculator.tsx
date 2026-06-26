@@ -1,24 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getEcoLevel } from "@/data/eco-impact-data";
-
-const levelStyles: Record<string, string> = {
-  "Eco Starter": "bg-brand-beige text-brand-dark/70",
-  "Eco Supporter": "bg-brand-green-light text-brand-green-dark",
-  "Eco Champion": "bg-brand-sage text-brand-green-dark",
-  "Eco Guardian": "bg-brand-leaf/20 text-brand-green-dark",
-};
+import type { EcoRank } from "@/app/actions/impact";
 
 export default function PersonalImpactCalculator() {
   const [input, setInput] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [ranks, setRanks] = useState<EcoRank[]>([]);
+
+  useEffect(() => {
+    fetch("/api/impact/eco-ranks")
+      .then((r) => r.json())
+      .then(setRanks)
+      .catch(() => {});
+  }, []);
 
   const num = parseInt(input, 10);
   const valid = !Number.isNaN(num) && num >= 0 && input.trim() !== "";
 
-  const level = valid ? getEcoLevel(num) : "";
-  const levelClass = level ? (levelStyles[level] ?? "") : "";
+  const level = valid ? getEcoLevel(num, ranks) : "";
 
   return (
     <section className="page-surface px-6 section-pad">
@@ -71,9 +72,7 @@ export default function PersonalImpactCalculator() {
               <span className="text-sm font-medium text-brand-dark/60">
                 Level Eco-mu
               </span>
-              <span
-                className={`rounded-full px-4 py-1 text-xs font-bold uppercase tracking-wider ${levelClass}`}
-              >
+              <span className="rounded-full bg-brand-green-light px-4 py-1 text-xs font-bold uppercase tracking-wider text-brand-green-dark">
                 {level}
               </span>
             </div>

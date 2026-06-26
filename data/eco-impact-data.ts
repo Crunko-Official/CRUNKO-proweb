@@ -1,29 +1,22 @@
+export interface EcoRank {
+  id?: number
+  min_threshold: number
+  label: string
+}
+
 export interface EcoImpactData {
   totalCrunkoTerjual: number
   totalKemasanRecyclable: number
   aggregateLevel: string
+  communityRankName: string | null
+  ecoRanks: EcoRank[]
 }
 
-const ecoLevels = [
-  { min: 0, label: "Eco Starter" },
-  { min: 5, label: "Eco Supporter" },
-  { min: 15, label: "Eco Champion" },
-  { min: 30, label: "Eco Guardian" },
-] as const
-
-export function getEcoLevel(count: number): string {
-  let level: string = ecoLevels[0].label
-  for (const tier of ecoLevels) {
-    if (count >= tier.min) level = tier.label
+export function getEcoLevel(count: number, ecoRanks: EcoRank[]): string {
+  if (!ecoRanks.length) return "—"
+  let level = ecoRanks[0].label
+  for (const tier of ecoRanks) {
+    if (count >= tier.min_threshold) level = tier.label
   }
   return level
-}
-
-export function getEcoImpactData(): EcoImpactData {
-  const total = 125_000
-  return {
-    totalCrunkoTerjual: total,
-    totalKemasanRecyclable: Math.round(total * 0.95),
-    aggregateLevel: getEcoLevel(total),
-  }
 }
