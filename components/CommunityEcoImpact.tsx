@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { getEcoLevel } from "@/data/eco-impact-data"
+import { fetchWithCache } from "@/lib/data-cache"
 import type { EcoRank, SiteSettings } from "@/app/actions/impact"
 
 export default function CommunityEcoImpact() {
@@ -11,8 +12,8 @@ export default function CommunityEcoImpact() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/impact/settings").then((r) => r.json()),
-      fetch("/api/impact/eco-ranks").then((r) => r.json()),
+      fetchWithCache<SiteSettings>("/api/impact/settings"),
+      fetchWithCache<EcoRank[]>("/api/impact/eco-ranks"),
     ])
       .then(([s, r]) => {
         setSettings(s)

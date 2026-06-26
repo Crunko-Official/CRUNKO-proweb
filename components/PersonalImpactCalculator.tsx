@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getEcoLevel } from "@/data/eco-impact-data";
+import { fetchWithCache } from "@/lib/data-cache";
 import type { EcoRank } from "@/app/actions/impact";
 
 export default function PersonalImpactCalculator() {
@@ -10,8 +11,7 @@ export default function PersonalImpactCalculator() {
   const [ranks, setRanks] = useState<EcoRank[]>([]);
 
   useEffect(() => {
-    fetch("/api/impact/eco-ranks")
-      .then((r) => r.json())
+    fetchWithCache<EcoRank[]>("/api/impact/eco-ranks")
       .then(setRanks)
       .catch(() => {});
   }, []);
