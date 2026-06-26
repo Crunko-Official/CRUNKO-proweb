@@ -99,12 +99,12 @@ export default function SustainabilityLearning() {
                   <h3 className="text-xl font-bold leading-snug text-brand-dark">
                     {activeArticle.title}
                   </h3>
-                  <button
-                    type="button"
-                    onClick={() => setExpanded(null)}
-                    aria-label="Tutup artikel"
-                    className="interactive-lift flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-brand-line bg-white text-brand-dark/40 hover:bg-brand-green-light hover:text-brand-dark"
-                  >
+              <button
+                type="button"
+                onClick={() => setExpanded(null)}
+                aria-label="Tutup artikel"
+                className="interactive-lift t-colors flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-brand-line bg-white text-brand-dark/40 hover:bg-brand-green-light hover:text-brand-dark"
+              >
                     <svg
                       width="16"
                       height="16"

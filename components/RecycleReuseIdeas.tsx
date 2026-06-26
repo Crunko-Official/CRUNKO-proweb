@@ -32,7 +32,7 @@ export default function RecycleReuseIdeas() {
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           <BookmarkCard reduced={reduced} />
           <GiftTagCard reduced={reduced} />
-          <StorageBoxCard reduced={reduced} />
+          <StorageBoxCard />
         </div>
       </div>
     </section>
@@ -190,8 +190,9 @@ function BookmarkCard({ reduced }: { reduced: boolean }) {
         style={{ transformStyle: "preserve-3d" }}
       >
         <div
-          className="transition-[transform] duration-[350ms] motion-reduce:!transform-none"
+          className="motion-reduce:!transform-none"
           style={{
+            transition: "transform 0.5s var(--ease-out-expo)",
             transformStyle: "preserve-3d",
             transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
@@ -345,8 +346,9 @@ function GiftTagCard({ reduced }: { reduced: boolean }) {
         style={{ transformStyle: "preserve-3d" }}
       >
         <div
-          className="transition-[transform] duration-[350ms] motion-reduce:!transform-none"
+          className="motion-reduce:!transform-none"
           style={{
+            transition: "transform 0.5s var(--ease-out-expo)",
             transformStyle: "preserve-3d",
             transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
           }}
@@ -371,12 +373,10 @@ function GiftTagCard({ reduced }: { reduced: boolean }) {
 
 /* ──────────────── Card 3: Mini Storage Box (lid slide) ──────────────── */
 
-function StorageBoxCard({ reduced }: { reduced: boolean }) {
+function StorageBoxCard() {
   const [open, setOpen] = useState(false)
   const data = reuseIdeas[2]
   const toggle = () => setOpen((v) => !v)
-
-  const dur = reduced ? "duration-0" : "duration-500"
 
   return (
     <div className="card-surface relative overflow-hidden rounded-2xl">
@@ -429,8 +429,9 @@ function StorageBoxCard({ reduced }: { reduced: boolean }) {
         type="button"
         onClick={toggle}
         aria-pressed={open}
-        className={`absolute inset-0 z-10 flex w-full cursor-pointer flex-col outline-none transition-[transform,opacity] ease-out ${dur} motion-reduce:!translate-y-0 motion-reduce:!opacity-100 focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2`}
+        className="absolute inset-0 z-10 flex w-full cursor-pointer flex-col outline-none motion-reduce:!translate-y-0 motion-reduce:!opacity-100 focus-visible:ring-2 focus-visible:ring-brand-green focus-visible:ring-offset-2"
         style={{
+          transition: "transform 0.5s var(--ease-out-expo), opacity 0.5s var(--ease-out-expo)",
           transform: open ? "translateY(-100%)" : "translateY(0)",
           opacity: open ? 0 : 1,
         }}

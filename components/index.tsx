@@ -37,8 +37,8 @@ export function ProductCard({
       className="card-surface interactive-lift group relative flex min-h-[320px] flex-col overflow-hidden rounded-2xl opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
     >
-      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-mint to-brand-sage/45 p-8">
-        <div className="flex h-32 w-24 items-center justify-center rounded-xl bg-gradient-to-b from-white to-brand-green-light shadow-inner transition-transform duration-500 ease-out group-hover:scale-105">
+        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-mint to-brand-sage/45 p-8">
+          <div className="flex h-32 w-24 items-center justify-center rounded-xl bg-gradient-to-b from-white to-brand-green-light shadow-inner transition-transform duration-500 group-hover:scale-105" style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}>
           <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-green/50">
             Mockup<br />Produk
           </span>
@@ -75,8 +75,8 @@ export function StatBar({ label, percentage }: { label: string; percentage: numb
       </div>
       <div className="h-2.5 overflow-hidden rounded-full bg-brand-beige/60">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-brand-green to-brand-accent transition-all duration-1000"
-          style={{ width: `${percentage}%` }}
+          className="h-full rounded-full bg-gradient-to-r from-brand-green to-brand-accent"
+          style={{ width: `${percentage}%`, transition: 'width 1s var(--ease-out-expo)' }}
         />
       </div>
     </div>
@@ -113,8 +113,8 @@ export function TimelineItem({
       </div>
 
       <div className="relative flex-shrink-0">
-        <div className="relative z-10 flex h-6 w-6 items-center justify-center">
-          <div className="h-3 w-3 rounded-full bg-brand-green ring-4 ring-brand-green-light transition-all duration-300 group-hover:scale-150 group-hover:ring-8" />
+          <div className="relative z-10 flex h-6 w-6 items-center justify-center">
+          <div className="h-3 w-3 rounded-full bg-brand-green ring-4 ring-brand-green-light group-hover:scale-150 group-hover:ring-8" style={{ transition: 'all var(--duration-snappy) var(--ease-out-expo)' }} />
         </div>
         <div className="absolute left-1/2 top-6 h-full w-0.5 -translate-x-1/2 bg-gradient-to-b from-brand-beige to-brand-beige/20" />
       </div>
@@ -166,13 +166,15 @@ export function FormField({ label, multiline = false }: { label: string; multili
       {multiline ? (
         <textarea
           rows={4}
-          className="w-full resize-none rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 ease-out placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          className="w-full resize-none rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          style={{ transition: 'all var(--duration-snappy) var(--ease-out-expo)' }}
           placeholder={`${label.toLowerCase()} Anda...`}
         />
       ) : (
         <input
           type="text"
-          className="w-full rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none transition-all duration-300 ease-out placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          className="w-full rounded-xl border border-brand-line bg-white/80 px-4 py-3 text-sm text-brand-dark outline-none placeholder:text-brand-dark/30 focus:border-brand-green/40 focus:bg-white focus:shadow-lg focus:shadow-brand-green/5"
+          style={{ transition: 'all var(--duration-snappy) var(--ease-out-expo)' }}
           placeholder={`${label.toLowerCase()} Anda`}
         />
       )}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { getEcoLevel } from "@/data/eco-impact-data";
 
 const levelStyles: Record<string, string> = {
@@ -19,26 +19,6 @@ export default function PersonalImpactCalculator() {
 
   const level = valid ? getEcoLevel(num) : "";
   const levelClass = level ? (levelStyles[level] ?? "") : "";
-
-  const handleShare = useCallback(async () => {
-    const text = `🌱 Eco Impact Tracker — CRUNKO\n\nAku sudah mencapai level "${level}" dengan ${num} CRUNKO! ${num} kemasan Ivory paperboard diperkirakan berpotensi kembali ke rantai daur ulang.\n\nHitung dampakmu di crunko.eco/impact`;
-
-    if (typeof navigator !== "undefined") {
-      if ("share" in navigator) {
-        try {
-          await navigator.share({ title: "Eco Impact Tracker — CRUNKO", text });
-          return;
-        } catch {
-          // user cancelled fall through to clipboard
-        }
-      }
-      try {
-        await (navigator as Navigator).clipboard.writeText(text);
-      } catch {
-        // clipboard not available
-      }
-    }
-  }, [num, level]);
 
   return (
     <section className="page-surface px-6 section-pad">
@@ -71,7 +51,8 @@ export default function PersonalImpactCalculator() {
             onKeyDown={(e) => {
               if (e.key === "Enter" && valid) setSubmitted(true);
             }}
-            className="w-full rounded-xl border border-brand-line bg-white/85 px-4 py-3 text-center text-lg font-semibold text-brand-dark shadow-sm outline-none transition-colors focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 sm:w-36 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            className="w-full rounded-xl border border-brand-line bg-white/85 px-4 py-3 text-center text-lg font-semibold text-brand-dark shadow-sm outline-none transition-[border-color,box-shadow] sm:w-36 focus:border-brand-green focus:ring-2 focus:ring-brand-green/20 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            style={{ transitionTimingFunction: 'var(--ease-out-expo)', transitionDuration: 'var(--duration-snappy)' }}
             placeholder="0"
           />
           <button

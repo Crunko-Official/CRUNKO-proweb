@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 export default function StoryClient() {
   const progressRef = useRef<HTMLDivElement>(null);
@@ -138,11 +139,14 @@ export default function StoryClient() {
         style={{ maxWidth: "640px" }}
       >
         <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
-          <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
-            <img
+          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
+            <Image
               src="https://i.ibb.co.com/XxnNtTs7/images-2.jpg"
               alt="gang dan arsitektur Kotagede"
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 640px"
+              loading="lazy"
             />
           </div>
         </div>
@@ -184,11 +188,14 @@ export default function StoryClient() {
         style={{ maxWidth: "640px" }}
       >
         <div className="story-reveal my-10 border border-brand-line bg-white/55 p-[0.6rem] shadow-sm">
-          <div className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
-            <img
+          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-beige to-brand-sand">
+            <Image
               src="https://i.ibb.co.com/N2CC1p6s/images.jpg"
               alt="Yangko, dipotong khas berbentuk kotak"
-              className="h-full w-full object-cover"
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 640px"
+              loading="lazy"
             />
           </div>
         </div>
