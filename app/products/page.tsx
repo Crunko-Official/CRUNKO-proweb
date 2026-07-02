@@ -14,16 +14,20 @@ export default function ProductsPage() {
           <ProductCard
             name="CRUNKO Pandan"
             description="Yangko Rasa Pandan."
+            image="/crunko_pandan.png"
             delay={0}
+            href="https://id.shp.ee/7a2MMHna"
           />
           <ProductCard
             name="CRUNKO Melon"
             description="Yangko Rasa Melon"
+            badge="Segera Hadir"
             delay={150}
           />
           <ProductCard
             name="CRUNKO Stroberi"
             description="Yangko Rasa Stroberi."
+            badge="Segera Hadir"
             delay={300}
           />
           <ProductCard

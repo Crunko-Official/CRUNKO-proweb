@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function SectionHeading({
   label,
   title,
@@ -24,25 +26,44 @@ export function SectionHeading({
 export function ProductCard({
   name,
   description,
+  image,
   badge,
   delay,
+  href,
 }: {
   name: string;
   description: string;
+  image?: string;
   badge?: string;
   delay: number;
+  href?: string;
 }) {
+  const Tag = href ? "a" : "div";
   return (
-    <div
+    <Tag
+      href={href}
+      target={href ? "_blank" : undefined}
+      rel={href ? "noopener noreferrer" : undefined}
       className="card-surface interactive-lift group relative flex min-h-[320px] flex-col overflow-hidden rounded-2xl opacity-0 animate-fade-in-up"
       style={{ animationDelay: `${delay}ms`, animationFillMode: 'forwards' }}
     >
-        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br from-brand-mint to-brand-sage/45 p-8">
+      <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-white p-6">
+        {image ? (
+          <Image
+            src={image}
+            alt={name}
+            fill
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="rounded-xl object-cover transition-transform duration-500 group-hover:scale-105"
+            style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}
+          />
+        ) : (
           <div className="flex h-32 w-24 items-center justify-center rounded-xl bg-gradient-to-b from-white to-brand-green-light shadow-inner transition-transform duration-500 group-hover:scale-105" style={{ transitionTimingFunction: 'var(--ease-out-expo)' }}>
-          <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-green/50">
-            Mockup<br />Produk
-          </span>
-        </div>
+            <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-green/50">
+              Mockup<br />Produk
+            </span>
+          </div>
+        )}
         {badge && (
           <span className="absolute right-3 top-3 rounded-full bg-brand-green px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-lg">
             {badge}
@@ -53,7 +74,7 @@ export function ProductCard({
         <h3 className="text-lg font-bold text-brand-dark">{name}</h3>
         <p className="text-sm leading-relaxed text-brand-dark/60">{description}</p>
       </div>
-    </div>
+    </Tag>
   );
 }
 
