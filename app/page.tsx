@@ -20,10 +20,10 @@ export default function Home() {
             className="animate-fade-in-up max-w-2xl text-4xl font-bold leading-tight tracking-tight text-brand-dark opacity-0 md:text-6xl md:leading-[1.08] lg:text-7xl"
             style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
           >
-            Camilan Sehat
+            Natural Bite
             <br />
             <span className="bg-gradient-to-r from-brand-green to-brand-accent bg-clip-text text-transparent">
-              Cita Rasa Lokal
+              Local Delight
             </span>
           </h1>
 
