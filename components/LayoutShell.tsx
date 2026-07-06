@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
+import BGMPlayer from "@/components/BGMPlayer";
 
 export default function LayoutShell({
   children,
@@ -17,6 +18,7 @@ export default function LayoutShell({
 
   return (
     <>
+      <BGMPlayer />
       <Sidebar />
       <main
         key={pathname}
